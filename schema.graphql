@@ -1,0 +1,28 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    products: [Item]
+    product(id: ID!): Item
+}
+
+type Mutation {
+    newProduct(name: String, price: String, stock: Int): Item
+    addStock(id: ID!, unit: Int): Item
+    removeStock(id: ID!, unit: Int): Item
+    updatePrice(id: ID!, price: String): Item
+    deleteProduct(id: ID!): DeleteResponse
+}
+
+type Item {
+    id: ID!
+    name: String
+    price: String
+    stock: Int!
+}
+
+type DeleteResponse {
+    success: Boolean
+}
